@@ -31,12 +31,17 @@ MORSE_CODE_DIC = {
     'É': '..-..'
 }
 def text_to_morse(a):
-    list_of_text = list(a)
-    list_of_morse = []
-    for char in list_of_text:
-        list_of_morse.append(MORSE_CODE_DIC[char])
-        list_of_morse.append(' ')
-    morse_code = ''.join(list_of_morse)
-    return morse_code
+    morse = []
+
+    for char in a:
+        if char == ' ':
+            morse.append(' / ')   # word separator
+        elif char in MORSE_CODE_DIC:
+            morse.append(MORSE_CODE_DIC[char])
+        else:
+            pass  # ignore unknown characters
+
+    return ' '.join(morse)
+
 
 print("Your morse code is: ",text_to_morse(text))
